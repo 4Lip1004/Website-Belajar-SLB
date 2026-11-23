@@ -1,0 +1,459 @@
+@import "tailwindcss";
+
+/* =====================================
+   GLOBAL
+===================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.landing-page {
+  position: relative;
+  isolation: isolate;
+  will-change: opacity, transform, filter;
+}
+
+/* =====================================
+   PAGE TRANSITION
+===================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.page-enter {
+  animation: pageEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.page-exit {
+  animation: pageExit 0.9s cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageExit {
+  to {
+    opacity: 0;
+    transform: scale(0.94);
+    filter: blur(12px);
+  }
+}
+
+/* Backward compatibility */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.7s ease-in-out forwards;
+}
+
+/* =====================================
+   TEXT ANIMATION
+===================================== */
+
+.animate-text,
+.animate-title,
+.animate-description,
+.animate-button {
+  opacity: 0;
+}
+
+.animate-text {
+  animation: slideUp 0.8s ease-out 0.2s forwards;
+}
+
+.animate-title {
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+.animate-description {
+  animation: slideUp 0.8s ease-out 0.65s forwards;
+}
+
+.animate-button {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================
+   ILLUSTRATION ANIMATION
+===================================== */
+
+.illustration {
+  opacity: 0;
+  transform-origin: center bottom;
+
+  animation:
+    illustrationEntrance 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards,
+    illustrationFloat 4s ease-in-out 1.65s infinite;
+}
+
+@keyframes illustrationEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(100px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes illustrationFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+/* =====================================
+   BACKGROUND BLOBS
+===================================== */
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.blob-one {
+  width: 380px;
+  height: 380px;
+  background: #cce9df;
+  top: -170px;
+  left: -100px;
+  animation: blobMove 12s ease-in-out infinite alternate;
+}
+
+.blob-two {
+  width: 450px;
+  height: 450px;
+  background: #f7e7b8;
+  bottom: -220px;
+  right: -100px;
+  animation: blobMove 15s ease-in-out infinite alternate-reverse;
+}
+
+.blob-three {
+  width: 200px;
+  height: 200px;
+  background: #d4eee5;
+  top: 35%;
+  right: 38%;
+  animation: blobMove 10s ease-in-out infinite alternate;
+}
+
+@keyframes blobMove {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(35px, -25px) scale(1.12);
+  }
+}
+
+/* =====================================
+   FLOATING CIRCLES
+===================================== */
+
+.floating-circle {
+  position: absolute;
+  border: 2px solid rgba(41, 132, 119, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floating 6s ease-in-out infinite;
+}
+
+.circle-one {
+  width: 55px;
+  height: 55px;
+  top: 20%;
+  left: 8%;
+}
+
+.circle-two {
+  width: 25px;
+  height: 25px;
+  top: 70%;
+  left: 15%;
+  animation-delay: 1s;
+}
+
+.circle-three {
+  width: 70px;
+  height: 70px;
+  right: 8%;
+  top: 15%;
+  animation-delay: 2s;
+}
+
+.circle-four {
+  width: 35px;
+  height: 35px;
+  right: 40%;
+  bottom: 10%;
+  animation-delay: 3s;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-25px) rotate(15deg);
+  }
+}
+
+/* =====================================
+   SPARKLE
+===================================== */
+
+.sparkle,
+.image-sparkle {
+  position: absolute;
+  color: #e8b94f;
+  pointer-events: none;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.sparkle {
+  font-size: 25px;
+}
+
+.sparkle-one {
+  top: 22%;
+  left: 28%;
+}
+
+.sparkle-two {
+  top: 60%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.sparkle-three {
+  right: 20%;
+  top: 35%;
+  animation-delay: 1.5s;
+}
+
+.sparkle-four {
+  right: 35%;
+  bottom: 12%;
+  animation-delay: 0.5s;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.7) rotate(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3) rotate(45deg);
+  }
+}
+
+/* =====================================
+   ILLUSTRATION GLOW
+===================================== */
+
+.illustration-glow {
+  position: absolute;
+  width: 75%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(204, 233, 223, 0.8) 0%,
+    rgba(204, 233, 223, 0.2) 55%,
+    transparent 75%
+  );
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* =====================================
+   DECORATIVE RING
+===================================== */
+
+.animate-ring {
+  animation: ringFloat 5s ease-in-out infinite;
+}
+
+@keyframes ringFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+}
+
+/* =====================================
+   IMAGE SPARKLES
+===================================== */
+
+.image-sparkle {
+  z-index: 20;
+  font-size: 28px;
+}
+
+.image-sparkle-one {
+  top: 15%;
+  left: 15%;
+  animation-delay: 0.5s;
+}
+
+.image-sparkle-two {
+  top: 40%;
+  right: 5%;
+  animation-delay: 1.2s;
+}
+
+.image-sparkle-three {
+  bottom: 15%;
+  left: 20%;
+  animation-delay: 2s;
+}
+
+/* =====================================
+   BUTTON INTERACTION
+===================================== */
+
+.start-button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.start-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.start-button:hover::before {
+  left: 150%;
+}
+
+.start-button:hover {
+  transform: translateY(-5px) scale(1.04);
+  background-color: #206d62;
+  box-shadow: 0 12px 25px rgba(41, 132, 119, 0.25);
+}
+
+.start-button:active {
+  transform: scale(0.96);
+}
+
+.start-button:disabled {
+  cursor: wait;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-page,
+  .landing-page *,
+  .landing-page *::before,
+  .landing-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .animate-text,
+  .animate-title,
+  .animate-description,
+  .animate-button,
+  .illustration {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
