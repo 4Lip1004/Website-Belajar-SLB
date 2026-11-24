@@ -88,10 +88,6 @@ export default function SoalLatihan() {
 
   const isAnswered = selectedAnswer !== undefined;
 
-  const score = questions.filter(
-    (question) => answers[question.id] === question.answer
-  ).length;
-
   // Memilih jawaban
   const handleAnswer = (optionId) => {
     if (isAnswered) return;
@@ -143,38 +139,33 @@ export default function SoalLatihan() {
     return (
       <main className="flex min-h-[calc(100vh-68px)] items-center justify-center bg-[#fffaf0] px-5 py-10">
         <div className="w-full max-w-md rounded-[26px] border border-[#687c73] bg-white p-8 text-center shadow-lg">
+
           <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-[#e3f4e7]">
             <span className="text-5xl">🏆</span>
           </div>
+
           <h1 className="mt-5 text-3xl font-extrabold text-[#194c45]">
             Latihan Selesai!
           </h1>
+
           <p className="mt-2 text-[#66847d]">
             Hebat! Kamu sudah menyelesaikan semua soal.
           </p>
-          <div className="my-7 rounded-2xl bg-[#fff7df] p-5">
-            <p className="text-sm font-semibold text-[#66847d]">
-              Skor Kamu
-            </p>
-            <p className="mt-2 text-5xl font-extrabold text-[#298477]">
-              {Math.round((score / questions.length) * 100)}
-            </p>
-            <p className="mt-2 text-sm text-[#194c45]">
-              Jawaban benar: {score} dari {questions.length} soal
-            </p>
-          </div>
+
           <button
             onClick={handleRestart}
-            className="w-full rounded-full bg-[#298477] px-6 py-3.5 font-semibold text-white transition-all duration-300 hover:bg-[#206d62] active:scale-95"
+            className="mt-7 w-full rounded-full bg-[#298477] px-6 py-3.5 font-semibold text-white transition-all duration-300 hover:bg-[#206d62] active:scale-95"
           >
             Ulangi Latihan
           </button>
+
           <button
             onClick={() => navigate("/latihan")}
             className="mt-3 w-full rounded-full border border-[#298477] px-6 py-3.5 font-semibold text-[#298477] transition-colors hover:bg-[#e9f3e8]"
           >
             Kembali ke Latihan
           </button>
+
         </div>
       </main>
     );

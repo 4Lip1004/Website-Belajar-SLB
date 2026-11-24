@@ -19,15 +19,15 @@ export default function PreLogin() {
 
   return (
     <div
-      className={`landing-page relative h-screen overflow-hidden bg-[#fffaf0] font-sans text-[#194c45] ${isFadingOut ? "page-exit" : "page-enter"
+      className={`landing-page relative min-h-screen overflow-x-hidden bg-[#fffaf0] font-sans text-[#194c45] ${isFadingOut ? "page-exit" : "page-enter"
         }`}
     >
 
-      <main className="relative z-10 flex h-[calc(100vh-62px)] items-center overflow-hidden px-6 md:px-10 mt-16">
+      <main className="relative z-10 flex min-h-[calc(100svh-62px)] items-center px-6 py-10 md:px-10 ">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center md:grid-cols-2">
 
           {/* BAGIAN KIRI */}
-          <section className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
+          <section className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left ms-10 -mt-20">
 
             <div className="space-y-1">
               <p className="text-2xl font-bold leading-tight text-[#194c45] md:text-[40px] animate-text">
@@ -76,8 +76,7 @@ export default function PreLogin() {
           </section>
 
           {/* BAGIAN KANAN */}
-          <section className="relative mt-8 flex items-center justify-center md:mt-0 md:h-full">
-
+          <section className="relative mt-8 flex items-center justify-center md:mt-0 md:min-h-full">
             {/* Lingkaran dekoratif di belakang gambar */}
             <div className="illustration-glow" />
 
@@ -86,7 +85,7 @@ export default function PreLogin() {
             <img
               src="https://res.cloudinary.com/yzlryyr3/image/upload/v1795358969/Cheerful_Schoolboy_Pointing_Up_1.png"
               alt="Ilustrasi anak sedang belajar bahasa isyarat"
-              className="illustration relative z-10 block h-auto w-full max-w-97.5 object-contain md:max-w-150 md:-me-20 md:-mb-10"
+              className="illustration relative z-10 block h-auto w-full max-w-97.5 object-contain md:max-w-150 md:-me-20"
             />
 
             <span className="image-sparkle image-sparkle-one">✦</span>
